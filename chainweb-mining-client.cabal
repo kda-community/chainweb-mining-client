@@ -73,6 +73,7 @@ executable chainweb-mining-client
         , base >=4.10 && <5
         , base16-bytestring >=1.0
         , aeson >=1.5
+        , attoparsec-aeson
         , async >=2.2
         , bytes >=0.17
         , bytestring >=0.10
@@ -145,4 +146,3 @@ test-suite tests
         , sydtest >=0.4
         , text >=1.2
         , time >=1.9
-
