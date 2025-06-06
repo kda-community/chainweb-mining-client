@@ -32,7 +32,7 @@ import Configuration.Utils hiding (Error)
 import Control.Concurrent
 import Control.Concurrent.Async
 import Control.Concurrent.STM
-import Control.Exception (IOException, SomeAsyncException, throwIO)
+import Control.Exception (IOException, SomeAsyncException (..), throwIO, asyncExceptionFromException)
 import Control.Lens hiding ((.=))
 import Control.Monad
 import Control.Monad.Catch
@@ -689,8 +689,12 @@ getTrigger conf ver logger mgr (UpdateMap v) k = modifyMVar v $ \m -> case HM.lo
             -- a stream gets stale without failing.
 
         return $ Trigger $ pollSTM a >>= \case
-            Just (Right ()) -> return StreamClosed
-            Just (Left e) -> return $ StreamFailed e
+            Just (Right ()) ->
+                return StreamClosed
+            Just (Left (asyncExceptionFromException -> Just e@SomeAsyncException{})) ->
+                throwM e
+            Just (Left e) ->
+                return $ StreamFailed e
             Nothing -> do
                 isTimeout <- readTVar timeoutVar
                 isUpdate <- (/= cur) <$> readTVar var
