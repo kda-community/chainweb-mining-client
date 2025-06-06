@@ -13,7 +13,7 @@ jobs:
       matrix:
         ghc: ['8.10.7', '9.0.2', '9.2', '9.4']
         cabal: ['3.8']
-        os: ['ubuntu-20.04', 'ubuntu-22.04', 'macOS-latest']
+        os: ['ubuntu-22.04', 'macOS-latest']
 
     steps:
     - name: Set Variables
