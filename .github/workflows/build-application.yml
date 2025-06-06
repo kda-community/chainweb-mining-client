@@ -79,7 +79,7 @@ jobs:
         cp cabal.project.freeze $ARTIFACTS_DIR
         tar -C ./artifacts/ -czf "$ARTIFACTS_ARCHIVE" chainweb-mining-client
     - name: Safe artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.ARTIFACTS_NAME }}
         path: ${{ env.ARTIFACTS_ARCHIVE }}
