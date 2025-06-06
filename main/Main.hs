@@ -516,6 +516,13 @@ getNodeVersion conf mgr = do
         Just (String x) -> return $ ChainwebVersion x
         _ -> error "failed to parse chainweb version from node info"
 
+getChainCount :: Config -> HTTP.Manager -> IO Natural
+getChainCount conf mgr = do
+    i <- getInfo conf mgr
+    case HM.lookup "nodeNumberOfChains" i of
+        Just (Number x) -> return $ floor x
+        _ -> error "failed to parse chain count from node info"
+
 -- | Get new work from the chainweb node (for some available chain)
 --
 -- We don't retry here. If this fails, we loop around.
@@ -849,4 +856,3 @@ run conf logger = do
           (_configStratumDifficulty conf)
           (_configStratumRate conf)
           (f . Stratum.submitWork)
-
