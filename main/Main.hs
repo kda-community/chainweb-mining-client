@@ -829,7 +829,7 @@ run conf logger = do
             -- considered deprecated.
     ver <- getNodeVersion conf mgr
     updateMap <- newUpdateMap
-    withWorker $ \worker -> do
+    withWorker mgr $ \worker -> do
         forConcurrently_ [0 .. _configThreadCount conf - 1] $ \i ->
             withLogTag logger ("Thread " <> sshow i) $ \taggedLogger ->
                 miningLoop conf ver taggedLogger mgr updateMap (worker taggedLogger)
@@ -839,12 +839,16 @@ run conf logger = do
     workerRate = _getUnitPrefixed (_configHashRate conf) / fromIntegral (_configThreadCount conf)
 
     -- provide the inner computation with an initialized worker
-    withWorker f = case _configWorker conf of
+    withWorker mgr f = case _configWorker conf of
         SimulatedMinerWorker -> do
             rng <- MWC.createSystemRandom
             f $ \l -> simulatedMinerWorker l rng workerRate
         ConstantDelayWorker -> do
-            f $ \l -> constantDelayWorker l (_configConstantDelayBlockTime conf)
+            numChains <- getChainCount conf mgr
+            let actualDelay =
+                    (_configConstantDelayBlockTime conf * 1_000_000) `div`
+                        (_configThreadCount conf * fromIntegral numChains)
+            f $ \l -> constantDelayWorker l actualDelay
         OnDemandWorker -> do
             withOnDemandWorker logger (_configOnDemandPort conf) (_configOnDemandInterface conf) f
         ExternalWorker -> f $ \l -> externalWorker l (_configExternalWorkerCommand conf)
