@@ -40,7 +40,7 @@ custom-setup
     setup-depends:
           base >=4.10 && <5
         , Cabal >=3.0 && <4
-        , configuration-tools >=0.5
+        , configuration-tools >=0.7.1
 
 executable chainweb-mining-client
     hs-source-dirs: main, src
@@ -78,7 +78,7 @@ executable chainweb-mining-client
         , bytes >=0.17
         , bytestring >=0.10
         , clock >=0.8
-        , configuration-tools >=0.5
+        , configuration-tools >=0.7.1
         , connection >=0.3
         , cryptonite >=0.27
         , deeproute
@@ -134,7 +134,7 @@ test-suite tests
         , bytes >=0.17
         , bytestring >=0.10
         , clock >=0.8
-        , configuration-tools >=0.5
+        , configuration-tools >=0.7.1
         , cryptonite >=0.27
         , exceptions >=0.10
         , hashable >=1.3
