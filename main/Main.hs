@@ -833,6 +833,7 @@ run conf logger = do
             rng <- MWC.createSystemRandom
             f $ \l -> simulatedMinerWorker l rng workerRate
         ConstantDelayWorker -> do
+            -- THIS DOES NOT WORK
             f $ \l -> constantDelayWorker l (_configConstantDelayBlockTime conf)
         OnDemandWorker -> do
             withOnDemandWorker logger (_configOnDemandPort conf) (_configOnDemandInterface conf) f
@@ -845,4 +846,3 @@ run conf logger = do
           (_configStratumDifficulty conf)
           (_configStratumRate conf)
           (f . Stratum.submitWork)
-
