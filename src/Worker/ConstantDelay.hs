@@ -38,7 +38,7 @@ import Worker
 --
 constantDelayWorker :: Logger -> Natural -> Worker
 constantDelayWorker logger delay _nonce _target _cid work = do
-    logg Info $ "solve time (seconds): " <> T.pack (show delay)
+    logg Info $ "solve time (microseconds): " <> T.pack (show delay)
     threadDelay (fromIntegral delay)
     return work
   where
