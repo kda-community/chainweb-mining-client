@@ -11,8 +11,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ghc: ['9.6']
-        cabal: ['3.8']
+        ghc: ['9.8']
+        cabal: ['3.10']
         os: ['ubuntu-22.04', 'macOS-latest']
 
     steps:
@@ -93,7 +93,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        ghc: ["9.6"]
+        ghc: ["9.8"]
         os: ["ubuntu-22.04"]
     env:
       GHC_VERSION: ${{ matrix.ghc }}
