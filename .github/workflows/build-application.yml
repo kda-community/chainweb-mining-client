@@ -32,7 +32,7 @@ jobs:
 
     # Setup
     - name: Checkout repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
     - name: Install GHC and Cabal
       uses: haskell/actions/setup@v2
       with:
@@ -42,7 +42,7 @@ jobs:
       run: |
         ghc --version
         cabal --version
-    - uses: actions/cache@v3
+    - uses: actions/cache@v4
       name: Cache dist-newstyle
       with:
         path: |
@@ -82,7 +82,7 @@ jobs:
         cp cabal.project.freeze $ARTIFACTS_DIR
         tar -C ./artifacts/ -czf "$ARTIFACTS_ARCHIVE" chainweb-mining-client
     - name: Safe artifacts
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: ${{ env.ARTIFACTS_NAME }}
         path: ${{ env.ARTIFACTS_ARCHIVE }}
@@ -115,7 +115,7 @@ jobs:
         EOF
 
     - name: Get build artifacts
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: ${{ env.ARTIFACTS_NAME }}
         path: .
