@@ -127,6 +127,8 @@ test-suite tests
     build-depends:
         -- external
           QuickCheck >= 2.13
+        , autodocodec <0.4
+        , envparse <0.6
         , aeson >=1.5
         , base >=4.11 && <5
         , base16-bytestring >=1.0
