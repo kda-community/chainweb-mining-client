@@ -30,10 +30,6 @@ on:
 
 
   push:
-    paths:
-    - '**'
-    - '!.github/**'
-    - '.github/workflows/applications.yml'
 
 jobs:
 
