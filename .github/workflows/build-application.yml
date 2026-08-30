@@ -199,7 +199,7 @@ jobs:
         id: get_version
         shell: bash
         run: |
-         BIN=to_release/chainweb-mining-client.ghc${{ env.GHC_FOR_RELEASE }}.${{ env.MAIN_LINUX_VERSION }}.true/chainweb-mining-client
+          BIN=to_release/chainweb-mining-client.ghc${{ env.GHC_FOR_RELEASE }}.${{ env.MAIN_LINUX_VERSION }}.true/chainweb-mining-client
           chmod a+x "$BIN"
           VERSION=$($BIN --info | sed -nE 's/^chainweb-mining-client-([0-9.]+).*/\1/p')
           echo "version=$VERSION" >> $GITHUB_OUTPUT
