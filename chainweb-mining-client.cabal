@@ -1,4 +1,4 @@
-cabal-version: 3.0
+cabal-version: 3.16
 name: chainweb-mining-client
 description:
     A mining client for Kadena Chainweb. It supports
@@ -13,33 +13,31 @@ description:
 
     All other mining modes (GPU, CPU, and simulation) are intended only for testing.
 
-version: 0.5
+version: 0.6
 synopsis: Mining Client for Kadena Chainweb
-homepage: https://github.com/kadena-io/chainweb-mining-client
-bug-reports: https://github.com/kadena-io/chainweb-mining-client/issues
+homepage: https://github.com/kda-community/chainweb-mining-client
+bug-reports: https://github.com/kda-community/chainweb-mining-client/issues
 license: BSD-3-Clause
 license-file: LICENSE
 author: Lars Kuhtz
 maintainer: lars@kadena.io
-copyright: Copyright (c) 2019 - 2022, Kadena LLC
+copyright: Copyright (c) 2019 - 2022, Kadena LLC, 2025 - 2026 Chaineb Community
 category: Data, Mathematics
 build-type: Custom
 tested-with:
-      GHC==9.2.4
-    , GHC==9.0.2
-    , GHC==8.10.7
+      GHC==10.14.1
 extra-source-files:
     README.md
     CHANGELOG.md
 
 source-repository head
     type: git
-    location: https://github.com/kadena-io/chainweb-mining-client.git
+    location: https://github.com/kda-community/chainweb-mining-client.git
 
 custom-setup
     setup-depends:
-        , base >=4.12 && <5
-        , Cabal >=3.0 && <4
+        , base >=4.22 && <5
+        , Cabal >=3.16
         , configuration-tools >=0.7.1
 
 executable chainweb-mining-client
@@ -73,7 +71,7 @@ executable chainweb-mining-client
         , async >=2.2
         , attoparsec >=0.14
         , attoparsec-aeson >=2.2
-        , base >=4.12 && <5
+        , base >=4.22 && <5
         , base16-bytestring >=1.0
         , bytes >=0.17
         , bytestring >=0.10
@@ -128,7 +126,7 @@ test-suite tests
     build-depends:
         , QuickCheck >= 2.13
         , aeson >=1.5
-        , base >=4.12 && <5
+        , base >=4.22 && <5
         , base16-bytestring >=1.0
         , bytes >=0.17
         , bytestring >=0.10
@@ -144,6 +142,6 @@ test-suite tests
         , quickcheck-instances >=0.3
         , stm >=2.5
         , streaming-commons >=0.2.2
-        , sydtest >=0.4
+        , sydtest >=0.29
         , text >=1.2
         , time >=1.9
