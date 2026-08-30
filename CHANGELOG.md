@@ -1,6 +1,6 @@
 # Revision history for chainweb-mining-client
 
-## 0.6 -- 2026-08-29
+## 0.8 -- 2026-08-29
 
 * Bump tool chain to GHC 9.14
 
