@@ -25,20 +25,15 @@ A mining client for Kadena's chainweb node mining API. It supports
 
 ## Installation
 
-A docker image of the latest version is available at
-`ghcr.io/kadena-io/chainweb-mining-client:latest`.
+Latest binary releases can be found:
 
-Binaries can also be compiled with a recent version of GHC and cabal directly
-from [Hackage](https://hackage.haskell.org/package/chainweb-mining-client)
+https://github.com/kda-community/chainweb-mining-client/releases
 
-```sh
-cabal install chainweb-mining-client
-```
 
-or from the GitHub sources
+Binaries can also be compiled with a recent version of GHC and cabal from the GitHub sources
 
 ```sh
-git clone https://github.com/kadena-io/chainweb-mining-client/
+git clone https://github.com/kda-community/chainweb-mining-client/
 cd chainweb-mining-client
 cabal build
 cabal run chainweb-mining-client -- --help
@@ -353,8 +348,8 @@ chainweb-mining-client --config-file config.yml
 
 ## Related Resources
 
-*   [Chainweb Node Project Page](https://github.com/kadena-io/chainweb-node)
+*   [Chainweb Node Project Page](https://github.com/kda-community/chainweb-node)
 *   [Kadena Stratum Protocol](https://gist.github.com/mightybyte/f1567c2bec0380539c638225fb8c1cf4)
-*   [mining API of chainweb-node](https://api.chainweb.com/openapi/#tag/mining)
+*   [mining API of chainweb-node](https://api.chainweb-community.org/openapi/#tag/mining)
 *   [work header format](https://github.com/kadena-io/chainweb-node/wiki/Block-Header-Binary-Encoding#work-header-binary-format).
 *   [mining API wiki](https://github.com/kadena-io/chainweb-node/wiki/Mining-API).
