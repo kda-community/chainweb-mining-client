@@ -1,5 +1,11 @@
 # Revision history for chainweb-mining-client
 
+## 0.6 -- 2026-08-29
+
+* Bump tool chain to GHC 9.14
+
+* First community version
+
 ## 0.5 -- 2022-11-23
 
 *   Add `--stratum-rate` option, which specifies the mining rate (in
